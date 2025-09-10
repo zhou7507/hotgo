@@ -179,8 +179,6 @@ github.com/gogf/gf/contrib/nosql/redis/v2 v2.9.0 h1:EEZqu1PNRSmm+7Cqm9A/8+ObgfbM
 github.com/gogf/gf/contrib/nosql/redis/v2 v2.9.0/go.mod h1:LHrxY+2IzNTHVTPG/s5yaz1VmXbj+CQ7Hr5SeVkHiTw=
 github.com/gogf/gf/contrib/trace/jaeger/v2 v2.7.4 h1:JnUjXb7C9vmwcZFwXqnxi9H4/I0rir9LmRryIX7xNds=
 github.com/gogf/gf/contrib/trace/jaeger/v2 v2.7.4/go.mod h1:A3NhV8u45twLq5VdqObhYNhT4szLFLCROw4LzHM+lYg=
-github.com/gogf/gf/v2 v2.9.0 h1:semN5Q5qGjDQEv4620VzxcJzJlSD07gmyJ9Sy9zfbHk=
-github.com/gogf/gf/v2 v2.9.0/go.mod h1:sWGQw+pLILtuHmbOxoe0D+0DdaXxbleT57axOLH2vKI=
 github.com/gogf/gf/v2 v2.9.1-0.20250624075347-5fa656d1cc92 h1:ydiVI+0OGCH8eeuAq+P6XzyIX7CCbYose+AFvJdMD7k=
 github.com/gogf/gf/v2 v2.9.1-0.20250624075347-5fa656d1cc92/go.mod h1:sWGQw+pLILtuHmbOxoe0D+0DdaXxbleT57axOLH2vKI=
 github.com/gogf/selfupdate v0.0.0-20231215043001-5c48c528462f h1:7xfXR/BhG3JDqO1s45n65Oyx9t4E/UqDOXep6jXdLCM=
@@ -325,14 +323,8 @@ github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e/go.mod h1:zD1mROLA
 github.com/nxadm/tail v1.4.4/go.mod h1:kenIhsEOeOJmVchQTgglprH7qJGnHDVpk1VPCcaMI8A=
 github.com/nxadm/tail v1.4.8 h1:nPr65rt6Y5JFSKQO7qToXr7pePgD6Gwiw05lkbyAQTE=
 github.com/nxadm/tail v1.4.8/go.mod h1:+ncqLTQzXmGhMZNUePPaPqPvBxHAIsmXswZKocGu+AU=
-github.com/olekukonko/errors v0.0.0-20250405072817-4e6d85265da6 h1:r3FaAI0NZK3hSmtTDrBVREhKULp8oUeqLT5Eyl2mSPo=
-github.com/olekukonko/errors v0.0.0-20250405072817-4e6d85265da6/go.mod h1:ppzxA5jBKcO1vIpCXQ9ZqgDh8iwODz6OXIGKU8r5m4Y=
-github.com/olekukonko/ll v0.0.8 h1:sbGZ1Fx4QxJXEqL/6IG8GEFnYojUSQ45dJVwN2FH2fc=
-github.com/olekukonko/ll v0.0.8/go.mod h1:En+sEW0JNETl26+K8eZ6/W4UQ7CYSrrgg/EdIYT2H8g=
 github.com/olekukonko/tablewriter v0.0.5 h1:P2Ga83D34wi1o9J6Wh1mRuqd4mF/x/lgBS7N7AbDhec=
 github.com/olekukonko/tablewriter v0.0.5/go.mod h1:hPp6KlRPjbx+hW8ykQs1w3UBbZlj6HuIJcUGPhkA7kY=
-github.com/olekukonko/tablewriter v1.0.8 h1:f6wJzHg4QUtJdvrVPKco4QTrAylgaU0+b9br/lJxEiQ=
-github.com/olekukonko/tablewriter v1.0.8/go.mod h1:H428M+HzoUXC6JU2Abj9IT9ooRmdq9CxuDmKMtrOCMs=
 github.com/onsi/ginkgo v1.6.0/go.mod h1:lLunBs/Ym6LB5Z9jYTR76FiuTmxDTDusOGeTQH+WWjE=
 github.com/onsi/ginkgo v1.12.1/go.mod h1:zj2OWP4+oCPe1qIXoGWkgMRwljMUYCdkwsT2108oapk=
 github.com/onsi/ginkgo v1.16.4/go.mod h1:dX+/inL/fNMqNlz0e9LfyB9TswhZpCVdJM/Z6Vvnwo0=
