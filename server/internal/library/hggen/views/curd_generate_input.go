@@ -9,6 +9,8 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"github.com/olekukonko/tablewriter/renderer"
+	"github.com/olekukonko/tablewriter/tw"
 	"strings"
 
 	"hotgo/internal/dao"
@@ -30,6 +32,23 @@ const (
 	InputTypeInsertFields     = 6 // 编辑新增过滤字段
 	InputTypeTreeOptionFields = 7 // 关系树查询字段
 	EditInpValidatorGenerally = "if err := g.Validator().Rules(\"%s\").Data(in.%s).Messages(\"%s\").Run(ctx); err != nil {\n\t\treturn err.Current()\n\t}\n"
+	EditInpValidatorYaml      = "if err := validate.ValidateYAML(in.%s); err != nil {\n\t\treturn gerror.Newf(\"%s必须为有效的YAML格式: %%s\", err.Error())\n\t}\n"
+)
+
+var (
+	// tablewriter Options
+	twRenderer = tablewriter.WithRenderer(renderer.NewBlueprint(tw.Rendition{
+		Borders: tw.Border{Top: tw.Off, Bottom: tw.Off, Left: tw.Off, Right: tw.Off},
+		Settings: tw.Settings{
+			Separators: tw.Separators{BetweenRows: tw.Off, BetweenColumns: tw.Off},
+		},
+		Symbols: tw.NewSymbols(tw.StyleASCII),
+	}))
+	twConfig = tablewriter.WithConfig(tablewriter.Config{
+		Row: tw.CellConfig{
+			Formatting: tw.CellFormatting{AutoWrap: tw.WrapNone},
+		},
+	})
 )
 
 func (l *gCurd) inputTplData(ctx context.Context, in *CurdPreviewInput) (data g.Map, err error) {
@@ -67,13 +86,9 @@ func (l *gCurd) generateInputViewColumns(ctx context.Context, in *CurdPreviewInp
 		}
 	}
 
-	tw := tablewriter.NewWriter(buffer)
-	tw.SetBorder(false)
-	tw.SetRowLine(false)
-	tw.SetAutoWrapText(false)
-	tw.SetColumnSeparator("")
-	tw.AppendBulk(array)
-	tw.Render()
+	table := tablewriter.NewTable(buffer, twRenderer, twConfig)
+	table.Bulk(array)
+	table.Render()
 	stContent := buffer.String()
 	// Let's do this hack of table writer for indent!
 	stContent = gstr.Replace(stContent, "  #", "")
@@ -131,13 +146,9 @@ func (l *gCurd) generateInputListColumns(ctx context.Context, in *CurdPreviewInp
 		}
 	}
 
-	tw := tablewriter.NewWriter(buffer)
-	tw.SetBorder(false)
-	tw.SetRowLine(false)
-	tw.SetAutoWrapText(false)
-	tw.SetColumnSeparator("")
-	tw.AppendBulk(array)
-	tw.Render()
+	table := tablewriter.NewTable(buffer, twRenderer, twConfig)
+	table.Bulk(array)
+	table.Render()
 	stContent := buffer.String()
 	// Let's do this hack of table writer for indent!
 	stContent = gstr.Replace(stContent, "  #", "")
@@ -308,6 +319,8 @@ func makeValidatorFunc(field *sysin.GenCodesColumnListModel) (err error, rule st
 		rule = fmt.Sprintf(EditInpValidatorGenerally, "regex:^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,18}$", field.GoName, field.Dc+"必须包含6-18为字母和数字")
 	} else if field.FormRole == FormRoleAmount {
 		rule = fmt.Sprintf(EditInpValidatorGenerally, "regex:(^[0-9]{1,10}$)|(^[0-9]{1,10}[\\\\.]{1}[0-9]{1,2}$)", field.GoName, field.Dc+"最多允许输入10位整数及2位小数")
+	} else if field.FormRole == FormRoleYaml {
+		rule = fmt.Sprintf(EditInpValidatorYaml, field.GoName, field.Dc)
 	} else {
 		err = gerror.New("not support")
 	}
