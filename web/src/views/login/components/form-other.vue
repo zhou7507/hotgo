@@ -1,7 +1,7 @@
 <template>
   <n-form-item class="default-color">
     <div class="flex view-account-other">
-      <div class="flex-initial">
+      <!-- <div class="flex-initial">
         <span>其它登录方式</span>
       </div>
       <div class="flex-initial mx-2">
@@ -17,7 +17,7 @@
             <LogoTiktok />
           </n-icon>
         </a>
-      </div>
+      </div> -->
       <div
         class="flex-initial"
         style="margin-left: auto"

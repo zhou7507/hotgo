@@ -88,7 +88,7 @@
       <div
         class="layout-header-trigger layout-header-trigger-min"
         v-for="item in iconList"
-        :key="item.icon.name"
+        :key="item.icon"
       >
         <n-popover
           placement="bottom"
@@ -216,7 +216,6 @@
   } from 'naive-ui';
   import { TABS_ROUTES } from '@/store/mutation-types';
   import { useUserStore } from '@/store/modules/user';
-  import { useLockscreenStore } from '@/store/modules/lockscreen';
   import ProjectSetting from './ProjectSetting.vue';
   import { AsideMenu } from '@/layout/components/Menu';
   import { useProjectSetting } from '@/hooks/setting/useProjectSetting';
@@ -249,7 +248,6 @@
       const i18nStore = useI18nStore();
       const userStore = useUserStore();
       const notificationStore = notificationStoreWidthOut();
-      const useLockscreen = useLockscreenStore();
       const message = useMessage();
       const dialog = useDialog();
       const {
@@ -395,13 +393,6 @@
         {
           icon: 'BellOutlined',
           tips: '我的消息',
-        },
-        {
-          icon: 'LockOutlined',
-          tips: '锁屏',
-          eventObject: {
-            click: () => useLockscreen.setLock(true),
-          },
         },
       ];
 

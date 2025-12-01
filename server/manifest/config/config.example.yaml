@@ -2,6 +2,7 @@
 system:
   # 应用名称
   appName: "hotgo"
+  projectName: "HotGo"
   # debug开关，开启后接口出现错误时会向前端输出堆栈信息，可选：false|true，默认为true
   debug: true
   # gf运行模式，可选：not-set|develop|testing|staging|product。product模式下后台【开发工具】菜单自动隐藏

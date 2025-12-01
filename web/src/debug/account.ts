@@ -20,7 +20,7 @@ interface Account {
  */
 export function getDemoAccounts() {
   
-  let envConf = import.meta.env.VITE_APP_DEMO_ACCOUNT || "";
+  let envConf = (import.meta as any).env.VITE_APP_DEMO_ACCOUNT || "";
   // 帐号密码一样
   // [["username"],["username","password"],["username","password","name"]]
   try {

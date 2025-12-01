@@ -11,6 +11,7 @@ import (
 	"github.com/gogf/gf/v2/frame/g"
 	"github.com/gogf/gf/v2/net/ghttp"
 	"github.com/gogf/gf/v2/os/gtime"
+	"github.com/gogf/gf/v2/util/gmode"
 	"github.com/gogf/gf/v2/util/grand"
 	"hotgo/internal/consts"
 	"hotgo/internal/dao"
@@ -240,6 +241,10 @@ func (s *sSysSmsLog) VerifyCode(ctx context.Context, in *sysin.VerifyCodeInp) (e
 	if in.Mobile == "" {
 		err = gerror.New("手机号不能为空")
 		return
+	}
+	if g.Cfg().MustGet(ctx, "system.mode").String() == gmode.DEVELOP {
+		// 开发环境不校验验证码
+		return nil
 	}
 
 	config, err := service.SysConfig().GetSms(ctx)
