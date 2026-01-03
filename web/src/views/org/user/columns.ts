@@ -4,25 +4,9 @@ import { formatBefore } from '@/utils/dateUtil';
 
 export const columns = [
   {
-    title: '管理员ID',
+    title: '用户ID',
     key: 'id',
     width: 100,
-  },
-  {
-    title: '用户名',
-    key: 'username',
-    width: 100,
-  },
-  {
-    title: '姓名',
-    key: 'realName',
-    width: 100,
-    render(row) {
-      if (row.realName == '') {
-        return h(NText, { depth: 3 }, { default: () => '未设置' });
-      }
-      return row.realName;
-    },
   },
   {
     title: '头像',
@@ -50,6 +34,28 @@ export const columns = [
       }
     },
   },
+  {
+    title: '用户名',
+    key: 'username',
+    width: 100,
+  },
+  {
+    title: '姓名',
+    key: 'realName',
+    width: 100,
+    render(row) {
+      if (row.realName == '') {
+        return h(NText, { depth: 3 }, { default: () => '未设置' });
+      }
+      return row.realName;
+    },
+  },
+  {
+    title: '邮箱',
+    key: 'email',
+    width: 100,
+  },
+
   {
     title: '绑定角色',
     key: 'roleName',

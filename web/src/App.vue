@@ -16,7 +16,7 @@
   import { zhCN, dateZhCN, darkTheme } from 'naive-ui';
   import { AppProvider } from '@/components/Application';
   import { useDesignSettingStore } from '@/store/modules/designSetting';
-  import { lighten } from '@/utils';
+  import { lighten, normalizeToHex } from '@/utils';
 
   const designStore = useDesignSettingStore();
 
@@ -24,8 +24,8 @@
    * @type import('naive-ui').GlobalThemeOverrides
    */
   const getThemeOverrides = computed(() => {
-    const appTheme = designStore.appTheme;
-    const lightenStr = lighten(designStore.appTheme, 6);
+    const appTheme = normalizeToHex(designStore.appTheme);
+    const lightenStr = lighten(appTheme, 6);
     return {
       common: {
         primaryColor: appTheme,

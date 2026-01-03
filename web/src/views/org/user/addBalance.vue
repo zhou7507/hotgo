@@ -12,7 +12,7 @@
       >
         <n-alert :show-icon="false" type="info">
           通过扣除或增加你的余额来为
-          <b> {{ params.realName }}</b> 加款或扣款。当扣款方余额不足时，则会操作失败
+          <b> {{ params.realName }}</b> 充值或扣除。当扣款方余额不足时，则会操作失败
         </n-alert>
         <n-form
           :model="params"

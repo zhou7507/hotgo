@@ -1,4 +1,4 @@
-import { http, jumpExport } from '@/utils/http/axios';
+import { http } from '@/utils/http/axios';
 
 // 获取测试分类列表
 export function List(params) {

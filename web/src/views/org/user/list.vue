@@ -132,6 +132,14 @@
           </n-gi>
         </n-grid>
 
+        <n-grid x-gap="24" :cols="2">
+          <n-gi>
+            <n-form-item label="邮箱" path="email">
+              <n-input placeholder="请输入" v-model:value="formParams.email" />
+            </n-form-item>
+          </n-gi>
+        </n-grid>
+
         <n-divider title-placement="left">填写更多信息（可选)</n-divider>
         <n-grid x-gap="24" :cols="2">
           <n-gi>
@@ -157,11 +165,6 @@
           <n-gi>
             <n-form-item label="手机号" path="mobile">
               <n-input placeholder="请输入" v-model:value="formParams.mobile" />
-            </n-form-item>
-          </n-gi>
-          <n-gi>
-            <n-form-item label="邮箱" path="email">
-              <n-input placeholder="请输入" v-model:value="formParams.email" />
             </n-form-item>
           </n-gi>
         </n-grid>
@@ -278,6 +281,11 @@
       required: true,
       trigger: ['blur', 'input'],
       message: '请输入用户名',
+    },
+    email: {
+      required: true,
+      trigger: ['blur', 'input'],
+      message: '请输入邮箱',
     },
   };
 

@@ -115,9 +115,9 @@
         <div v-else>
           <n-tooltip placement="bottom">
             <template #trigger>
-              <n-icon size="18">
+              <!-- <n-icon size="18">
                 <component :is="item.icon" v-on="item.eventObject || {}" />
-              </n-icon>
+              </n-icon> -->
             </template>
             <span>{{ item.tips }}</span>
           </n-tooltip>
@@ -383,13 +383,13 @@
         //   icon: 'SearchOutlined',
         //   tips: '搜索',
         // },
-        {
-          icon: 'GithubOutlined',
-          tips: 'github',
-          eventObject: {
-            click: () => window.open('https://github.com/bufanyun/hotgo'),
-          },
-        },
+        // {
+        //   icon: 'GithubOutlined',
+        //   tips: 'github',
+        //   eventObject: {
+        //     click: () => window.open('https://xxx.com'),
+        //   },
+        // },
         {
           icon: 'BellOutlined',
           tips: '我的消息',

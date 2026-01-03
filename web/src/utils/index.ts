@@ -416,6 +416,97 @@ export function lighten(color: string, amount: number) {
   )}${addLight(color.substring(4, 6), amount)}`;
 }
 
+// Normalize any CSS color string to 6-digit hex (#rrggbb)
+export function normalizeToHex(color: string): string {
+  if (!color) return '#000000';
+  const str = color.trim().toLowerCase();
+  // Already hex
+  if (str.startsWith('#')) {
+    // Expand short hex like #fff to #ffffff
+    if (str.length === 4) {
+      const r = str[1];
+      const g = str[2];
+      const b = str[3];
+      return `#${r}${r}${g}${g}${b}${b}`;
+    }
+    // Ensure 6-digit
+    if (str.length === 7) return str;
+    // Handle 8-digit hex with alpha by dropping alpha
+    if (str.length === 9) return `#${str.slice(1, 7)}`;
+    return '#000000';
+  }
+
+  // rgb/rgba
+  const rgbMatch = str.match(/^rgba?\(([^)]+)\)$/);
+  if (rgbMatch) {
+    const parts = rgbMatch[1].split(',').map((p) => p.trim());
+    const r = clamp255(parseFloat(parts[0]));
+    const g = clamp255(parseFloat(parts[1]));
+    const b = clamp255(parseFloat(parts[2]));
+    return rgbToHex(r, g, b);
+  }
+
+  // hsl/hsla
+  const hslMatch = str.match(/^hsla?\(([^)]+)\)$/);
+  if (hslMatch) {
+    const parts = hslMatch[1].split(',').map((p) => p.trim());
+    const h = parseFloat(parts[0]);
+    const s = parseFloat(parts[1].replace('%', '')) / 100;
+    const l = parseFloat(parts[2].replace('%', '')) / 100;
+    const { r, g, b } = hslToRgb(h, s, l);
+    return rgbToHex(r, g, b);
+  }
+
+  // Fallback
+  return '#000000';
+}
+
+function clamp255(n: number): number {
+  if (Number.isNaN(n)) return 0;
+  return Math.max(0, Math.min(255, Math.round(n)));
+}
+
+function rgbToHex(r: number, g: number, b: number): string {
+  const toHex = (x: number) => x.toString(16).padStart(2, '0');
+  return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+}
+
+function hslToRgb(h: number, s: number, l: number): { r: number; g: number; b: number } {
+  const c = (1 - Math.abs(2 * l - 1)) * s;
+  const hp = (h % 360) / 60;
+  const x = c * (1 - Math.abs((hp % 2) - 1));
+  let r1 = 0,
+    g1 = 0,
+    b1 = 0;
+
+  if (hp >= 0 && hp < 1) {
+    r1 = c;
+    g1 = x;
+  } else if (hp >= 1 && hp < 2) {
+    r1 = x;
+    g1 = c;
+  } else if (hp >= 2 && hp < 3) {
+    g1 = c;
+    b1 = x;
+  } else if (hp >= 3 && hp < 4) {
+    g1 = x;
+    b1 = c;
+  } else if (hp >= 4 && hp < 5) {
+    r1 = x;
+    b1 = c;
+  } else if (hp >= 5 && hp < 6) {
+    r1 = c;
+    b1 = x;
+  }
+
+  const m = l - c / 2;
+  return {
+    r: clamp255((r1 + m) * 255),
+    g: clamp255((g1 + m) * 255),
+    b: clamp255((b1 + m) * 255),
+  };
+}
+
 // 获取树的所有节点key
 export function getAllExpandKeys(treeData: any): any[] {
   let expandedKeys: any = [];

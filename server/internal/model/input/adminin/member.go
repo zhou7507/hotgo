@@ -8,14 +8,15 @@ package adminin
 import (
 	"context"
 	"fmt"
-	"github.com/gogf/gf/v2/errors/gerror"
-	"github.com/gogf/gf/v2/frame/g"
-	"github.com/gogf/gf/v2/os/gtime"
 	"hotgo/internal/consts"
 	"hotgo/internal/library/contexts"
 	"hotgo/internal/model/entity"
 	"hotgo/internal/model/input/form"
 	"hotgo/utility/validate"
+
+	"github.com/gogf/gf/v2/errors/gerror"
+	"github.com/gogf/gf/v2/frame/g"
+	"github.com/gogf/gf/v2/os/gtime"
 )
 
 // MemberUpdateCashInp 更新会员提现信息
@@ -272,14 +273,14 @@ func (in *MemberAddBalanceInp) Filter(ctx context.Context) (err error) {
 	}
 
 	if in.OperateMode == 1 {
-		// 加款
+		// 充值
 		in.SelfNum = -in.Num
 		in.SelfCreditGroup = consts.CreditGroupOpIncr
 		in.OtherNum = in.Num
 		in.OtherCreditGroup = consts.CreditGroupIncr
 		in.Remark = fmt.Sprintf("增加余额:%v", in.OtherNum)
 	} else {
-		// 扣款
+		// 积分扣除
 		in.SelfNum = in.Num
 		in.SelfCreditGroup = consts.CreditGroupOpDecr
 		in.OtherNum = -in.Num
@@ -315,14 +316,14 @@ func (in *MemberAddIntegralInp) Filter(ctx context.Context) (err error) {
 	}
 
 	if in.OperateMode == 1 {
-		// 加款
+		// 充值
 		in.SelfNum = -in.Num
 		in.SelfCreditGroup = consts.CreditGroupOpIncr
 		in.OtherNum = in.Num
 		in.OtherCreditGroup = consts.CreditGroupIncr
 		in.Remark = fmt.Sprintf("增加积分:%v", in.OtherNum)
 	} else {
-		// 扣款
+		// 积分扣除
 		in.SelfNum = in.Num
 		in.SelfCreditGroup = consts.CreditGroupOpDecr
 		in.OtherNum = -in.Num

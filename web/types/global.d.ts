@@ -56,6 +56,9 @@ declare global {
   interface ImportMetaEnv extends ViteEnv {
     __: unknown;
   }
+  interface ImportMeta {
+    readonly env: ImportMetaEnv;
+  }
 
   declare interface ViteEnv {
     VITE_PORT: number;

@@ -187,8 +187,8 @@
           navMode === 'horizontal' || !isMixMenuNoneSub.value
             ? '0px'
             : collapsed
-            ? `${minMenuWidth}px`
-            : `${menuWidth}px`;
+              ? `${minMenuWidth}px`
+              : `${menuWidth}px`;
 
         if (getIsMobile.value) {
           return {

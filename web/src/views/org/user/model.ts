@@ -40,11 +40,11 @@ export function addNewState(state: addState | null): addState {
 export const operateModes = [
   {
     value: 1,
-    label: '加款',
+    label: '充值',
   },
   {
     value: 2,
-    label: '扣款',
+    label: '扣除',
   },
 ];
 

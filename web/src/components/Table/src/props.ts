@@ -20,6 +20,10 @@ export const basicProps = {
     type: Boolean,
     default: false,
   },
+  showDensity: {
+    type: Boolean,
+    default: false,
+  },
   size: {
     type: String,
     default: 'medium',
@@ -62,6 +66,12 @@ export const basicProps = {
     type: Object as PropType<BasicColumn>,
     default: null,
   },
-  canResize: propTypes.bool.def(true),
-  resizeHeightOffset: propTypes.number.def(0),
+  canResize: {
+    type: Boolean,
+    default: true,
+  },
+  resizeHeightOffset: {
+    type: Number,
+    default: 0,
+  },
 };

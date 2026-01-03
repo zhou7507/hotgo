@@ -237,6 +237,7 @@
   import { Moon, SunnySharp } from '@vicons/ionicons5';
   import { darkTheme } from 'naive-ui';
   import { animates as animateOptions } from '@/settings/animateSetting';
+  import { isProdMode } from '@/utils/env';
 
   export default defineComponent({
     name: 'ProjectSetting',
@@ -276,6 +277,9 @@
       });
 
       function openDrawer() {
+        if (isProdMode()) {
+          return;
+        }
         state.isDrawer = true;
       }
 

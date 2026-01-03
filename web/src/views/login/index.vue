@@ -16,7 +16,7 @@
             <transition name="fade-slide" appear>
               <component
                 :is="activeModule.component"
-                @updateActiveModule="handleUpdateActiveModule"
+                @update-active-module="handleUpdateActiveModule"
               />
             </transition>
           </div>

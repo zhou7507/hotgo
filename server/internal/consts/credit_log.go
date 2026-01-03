@@ -21,10 +21,10 @@ const (
 )
 
 const (
-	CreditGroupDecr            = "decr"             // 扣款
-	CreditGroupIncr            = "incr"             // 加款
-	CreditGroupOpDecr          = "op_decr"          // 操作扣款
-	CreditGroupOpIncr          = "op_incr"          // 操作加款
+	CreditGroupDecr            = "decr"             // 扣除
+	CreditGroupIncr            = "incr"             // 充值
+	CreditGroupOpDecr          = "op_decr"          // 人工扣款
+	CreditGroupOpIncr          = "op_incr"          // 人工充值
 	CreditGroupBalanceRecharge = "balance_recharge" // 余额充值
 	CreditGroupBalanceRefund   = "balance_refund"   // 余额退款
 	CreditGroupApplyCash       = "apply_cash"       // 申请提现
@@ -38,10 +38,10 @@ var CreditTypeOptions = []*model.Option{
 
 // CreditGroupOptions 变动分组
 var CreditGroupOptions = []*model.Option{
-	dict.GenWarningOption(CreditGroupDecr, "扣款"),
-	dict.GenSuccessOption(CreditGroupIncr, "加款"),
-	dict.GenWarningOption(CreditGroupOpDecr, "操作扣款"),
-	dict.GenSuccessOption(CreditGroupOpIncr, "操作加款"),
+	dict.GenWarningOption(CreditGroupDecr, "扣除"),
+	dict.GenSuccessOption(CreditGroupIncr, "充值"),
+	dict.GenWarningOption(CreditGroupOpDecr, "人工扣除"),
+	dict.GenSuccessOption(CreditGroupOpIncr, "人工充值"),
 	dict.GenWarningOption(CreditGroupBalanceRefund, "余额退款"),
 	dict.GenSuccessOption(CreditGroupBalanceRecharge, "余额充值"),
 	dict.GenInfoOption(CreditGroupApplyCash, "申请提现"),

@@ -46,7 +46,7 @@
       </n-tooltip>
 
       <!--密度-->
-      <n-tooltip trigger="hover">
+      <n-tooltip trigger="hover" v-if="showDensity">
         <template #trigger>
           <div class="table-toolbar-right-icon">
             <n-dropdown

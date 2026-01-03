@@ -76,12 +76,6 @@
   </div>
 </template>
 
-<style scoped>
-  .card-tabs .n-tabs-nav--bar-type {
-    padding-left: 4px;
-  }
-</style>
-
 <script lang="ts" setup>
   import { onMounted, ref, watch } from 'vue';
   import { useRouter } from 'vue-router';
@@ -291,6 +285,12 @@
     });
   }
 </script>
+
+<style scoped>
+  .card-tabs .n-tabs-nav--bar-type {
+    padding-left: 4px;
+  }
+</style>
 <style lang="less" scoped>
   ::v-deep(.alert-margin) {
     margin-bottom: 20px;

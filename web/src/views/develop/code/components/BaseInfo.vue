@@ -291,7 +291,9 @@
         </template>
 
         <n-form ref="formRef" :model="formValue">
-          <n-alert type="warning" :show-icon="false" v-if="formValue.options?.join?.length > 3">关联表数量建议在三个以下</n-alert>
+          <n-alert type="warning" :show-icon="false" v-if="formValue.options?.join?.length > 3"
+            >关联表数量建议在三个以下</n-alert
+          >
           <div class="mt-4"></div>
           <n-row :gutter="6" v-for="(join, index) in formValue.options.join" :key="index">
             <n-col :span="6" style="min-width: 200px">
@@ -374,7 +376,7 @@
       </n-card>
     </n-spin>
 
-    <MenuModal ref="menuModalRef" @reloadTable="loadMenuTreeOption" />
+    <MenuModal ref="menuModalRef" @reload-table="loadMenuTreeOption" />
     <SetFuncDict
       ref="setFuncDictRef"
       @update="handleUpdateFuncDict"
