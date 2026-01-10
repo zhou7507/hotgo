@@ -385,6 +385,20 @@ type (
 		// VerifyCode 效验验证码
 		VerifyCode(ctx context.Context, in *sysin.VerifyCodeInp) (err error)
 	}
+	ISysTenantBillInfo interface {
+		// Model 账单管理ORM模型
+		Model(ctx context.Context, option ...*handler.Option) *gdb.Model
+		// List 获取账单管理列表
+		List(ctx context.Context, in *sysin.TenantBillInfoListInp) (list []*sysin.TenantBillInfoListModel, totalCount int, err error)
+		// Export 导出账单管理
+		Export(ctx context.Context, in *sysin.TenantBillInfoListInp) (err error)
+		// Edit 修改/新增账单管理
+		Edit(ctx context.Context, in *sysin.TenantBillInfoEditInp) (err error)
+		// Delete 删除账单管理
+		Delete(ctx context.Context, in *sysin.TenantBillInfoDeleteInp) (err error)
+		// View 获取账单管理指定信息
+		View(ctx context.Context, in *sysin.TenantBillInfoViewInp) (res *sysin.TenantBillInfoViewModel, err error)
+	}
 	ISysTestCategory interface {
 		// Model 测试分类ORM模型
 		Model(ctx context.Context, option ...*handler.Option) *gdb.Model
@@ -426,6 +440,7 @@ var (
 	localSysServeLicense   ISysServeLicense
 	localSysServeLog       ISysServeLog
 	localSysSmsLog         ISysSmsLog
+	localSysTenantBillInfo ISysTenantBillInfo
 	localSysTestCategory   ISysTestCategory
 )
 
@@ -647,6 +662,17 @@ func SysSmsLog() ISysSmsLog {
 
 func RegisterSysSmsLog(i ISysSmsLog) {
 	localSysSmsLog = i
+}
+
+func SysTenantBillInfo() ISysTenantBillInfo {
+	if localSysTenantBillInfo == nil {
+		panic("implement not found for interface ISysTenantBillInfo, forgot register?")
+	}
+	return localSysTenantBillInfo
+}
+
+func RegisterSysTenantBillInfo(i ISysTenantBillInfo) {
+	localSysTenantBillInfo = i
 }
 
 func SysTestCategory() ISysTestCategory {

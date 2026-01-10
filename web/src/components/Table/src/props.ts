@@ -1,5 +1,4 @@
 import type { PropType } from 'vue';
-import { propTypes } from '@/utils/propTypes';
 import { BasicColumn } from './types/table';
 import { NDataTable } from 'naive-ui';
 export const basicProps = {

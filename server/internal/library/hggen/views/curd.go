@@ -1,8 +1,5 @@
 // Package views
-// @Link  https://github.com/bufanyun/hotgo
-// @Copyright  Copyright (c) 2023 HotGo CLI
-// @Author  Ms <133814250@qq.com>
-// @License  https://github.com/bufanyun/hotgo/blob/master/LICENSE
+
 package views
 
 import (
@@ -896,7 +893,7 @@ func (l *gCurd) generateSqlContent(ctx context.Context, in *CurdPreviewInput) (e
 			"menuTable":     config.Prefix + "admin_menu",
 			"mainComponent": "LAYOUT",
 		}
-		genFile     = new(sysin.GenFile)
+		genFile      = new(sysin.GenFile)
 		templateName = "source.sql.template"
 	)
 

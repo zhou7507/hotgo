@@ -1,8 +1,5 @@
 // Package consts
-// @Link  https://github.com/bufanyun/hotgo
-// @Copyright  Copyright (c) 2023 HotGo CLI
-// @Author  Ms <133814250@qq.com>
-// @License  https://github.com/bufanyun/hotgo/blob/master/LICENSE
+
 package consts
 
 import (
@@ -18,22 +15,26 @@ func init() {
 }
 
 const (
-	PayTypeALL    = ""       // 全部
-	PayTypeWxPay  = "wxpay"  // 微信支付
-	PayTypeAliPay = "alipay" // 支付宝
-	PayTypeQQPay  = "qqpay"  // QQ支付
+	PayTypeALL      = ""         // 全部
+	PayTypeWxPay    = "wxpay"    // 微信支付
+	PayTypeAliPay   = "alipay"   // 支付宝
+	PayTypeQQPay    = "qqpay"    // QQ支付
+	PayTypeBankPay  = "bankpay"  // 银行卡
+	PayTypeCryptPay = "cryptpay" // 加密货币
 )
 
 var (
 	PayTypeSlice = []string{
-		PayTypeWxPay, PayTypeAliPay, PayTypeQQPay,
+		PayTypeWxPay, PayTypeAliPay, PayTypeQQPay, PayTypeBankPay, PayTypeCryptPay,
 	}
 
 	PayTypeNameMap = map[string]string{
-		PayTypeALL:    "全部",
-		PayTypeWxPay:  "微信支付",
-		PayTypeAliPay: "支付宝",
-		PayTypeQQPay:  "QQ支付",
+		PayTypeALL:      "全部",
+		PayTypeWxPay:    "微信支付",
+		PayTypeAliPay:   "支付宝",
+		PayTypeQQPay:    "QQ支付",
+		PayTypeBankPay:  "银行卡",
+		PayTypeCryptPay: "加密货币",
 	}
 )
 
@@ -92,5 +93,6 @@ const (
 var PayTypeOptions = []*model.Option{
 	dict.GenSuccessOption(PayTypeWxPay, "微信支付"),
 	dict.GenInfoOption(PayTypeAliPay, "支付宝"),
-	dict.GenDefaultOption(PayTypeQQPay, "QQ支付"),
+	dict.GenDefaultOption(PayTypeBankPay, "银行卡"),
+	dict.GenDefaultOption(PayTypeCryptPay, "加密货币"),
 }

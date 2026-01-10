@@ -67,7 +67,7 @@
           :file-type="fileType"
           :maxNumber="maxNumber"
           :fileList="fileList"
-          @saveChange="saveChange"
+          @save-change="saveChange"
         />
       </n-card>
       <template #footer>

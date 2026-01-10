@@ -1,25 +1,22 @@
 // Package excel
-// @Link  https://github.com/bufanyun/hotgo
-// @Copyright  Copyright (c) 2023 HotGo CLI
-// @Author  Ms <133814250@qq.com>
-// @License  https://github.com/bufanyun/hotgo/blob/master/LICENSE
 package excel
 
 import (
 	"context"
 	"fmt"
-	"github.com/gogf/gf/v2/errors/gcode"
-	"github.com/gogf/gf/v2/errors/gerror"
-	"github.com/gogf/gf/v2/net/ghttp"
-	"github.com/gogf/gf/v2/os/gctx"
-	"github.com/gogf/gf/v2/util/gconv"
-	"github.com/xuri/excelize/v2"
 	"hotgo/internal/library/contexts"
 	"hotgo/internal/model"
 	"net/url"
 	"reflect"
 	"time"
 	"unicode"
+
+	"github.com/gogf/gf/v2/errors/gcode"
+	"github.com/gogf/gf/v2/errors/gerror"
+	"github.com/gogf/gf/v2/net/ghttp"
+	"github.com/gogf/gf/v2/os/gctx"
+	"github.com/gogf/gf/v2/util/gconv"
+	"github.com/xuri/excelize/v2"
 )
 
 var (
